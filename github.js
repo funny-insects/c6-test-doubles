@@ -29,4 +29,4 @@ async function isRepoPublic(owner, repo) {
   return data.private === false;
 }
 
-module.exports = { doesUserExist, getUserFollowerCount, doesRepoExist, isRepoPublic };
+module.exports = { fetchJSON, doesUserExist, getUserFollowerCount, doesRepoExist, isRepoPublic };
