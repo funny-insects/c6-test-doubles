@@ -29,4 +29,13 @@ async function isRepoPublic(owner, repo) {
   return data.private === false;
 }
 
-module.exports = { doesUserExist, getUserFollowerCount, doesRepoExist, isRepoPublic };
+async function getRepoInfo(owner, repo) {
+  const data = await fetchJSON(`${BASE_URL}/repos/${owner}/${repo}`);
+  if (data === null) {
+    console.error(`Error: repo ${owner}/${repo} not found`);
+    return;
+  }
+  console.log(`Repo: ${data.name}, Stars: ${data.stargazers_count}`);
+}
+
+module.exports = { doesUserExist, getUserFollowerCount, doesRepoExist, isRepoPublic, getRepoInfo };
